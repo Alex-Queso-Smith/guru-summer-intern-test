@@ -27,11 +27,19 @@ export default function EarthquakeData(WrappedComponent) {
     }
 
     componentDidMount() {
-      /**
-       * Write the logic to fetch the earthquakes here
-       * It should sort filter and slice the data as soon as it loads.
-       * this should be achieved with the organizeEarthquakes function you write
-       */
+      fetch('http://interviewtest.getguru.com/seismic/data.json')
+      .then(response => {
+         if(response.ok){
+           return response
+         } else {
+           let errorMessage = `${response.status} (${response.statusText})`,
+               error = new Error(errorMessage)
+           throw(error)
+         }
+       })
+      .then(response => response.json())
+      .then(date = { this.setState({ earthquakes: data }) })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
     updateFilter(filter) {
