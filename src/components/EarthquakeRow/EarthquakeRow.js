@@ -22,18 +22,17 @@ export default class EarthquakeRow extends PureComponent {
     const { id, time, place, mag, longitude, latitude } = this.props;
     const formattedTime = Moment(time).format('MMMM D, YYYY @ k:mm');
 
-    let earthquakeDetails = <EarthquakeDetailsButton onClick={this.toggleDetails} />;
+    let earthquakeDetails = (
+      <EarthquakeDetailsButton onClick={this.toggleDetails} />
+    );
 
     if (this.state.expanded) {
-    earthquakeDetails =
-      <div className="EarthquakeRow__details" onClick={this.toggleDetails}>
-        <div className="EarthquakeRow__detail">
-          Latitude: {latitude}
+      earthquakeDetails = (
+        <div className="EarthquakeRow__details">
+          <div className="EarthquakeRow__detail">Latitude: {latitude}</div>
+          <div className="EarthquakeRow__detail">Longitude: {longitude}</div>
         </div>
-        <div className="EarthquakeRow__detail">
-          Longitude: {longitude}
-        </div>
-      </div>
+      );
     }
 
     return (

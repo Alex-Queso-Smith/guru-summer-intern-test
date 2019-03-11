@@ -17,9 +17,11 @@ export default function organizeEarthquakes(filter, earthquakes) {
 
   if (filter.trim() !== '') {
     // returns sortedEarthquakes filtered by search
-    return sortedEarthquakes.filter(quake => quake.place.toLowerCase().includes(filter.toLowerCase())).slice(0, size);
+    return sortedEarthquakes
+      .filter(quake => quake.place.toLowerCase().includes(filter.toLowerCase()))
+      .slice(0, size);
   }
-  
+
   // return base sortedEarthquakes unfiltered if search is blank
   return sortedEarthquakes.slice(0, size);
 }

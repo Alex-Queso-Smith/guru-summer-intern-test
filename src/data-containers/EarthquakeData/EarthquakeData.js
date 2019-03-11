@@ -14,23 +14,21 @@ export default function EarthquakeData(WrappedComponent) {
       };
 
       this.updateFilter = this.updateFilter.bind(this);
-      this._isMounted = false;
+      this.updateEarthquakeData = this.updateEarthquakeData.bind(this);
     }
 
     async componentDidMount() {
-      this._isMounted = true;
-
       try {
-        const response = await fetch('http://interviewtest.getguru.com/seismic/data.json');
+        const response = await fetch(
+          'http://interviewtest.getguru.com/seismic/data.json'
+        );
         if (response.ok) {
           const earthquakes = await response.json();
-          if (this._isMounted) {
-            this.setState({ earthquakes });
-            this.updateFilter(this.state.filter, this.state.earthquakes);
-          }
+          this.updateEarthquakeData(earthquakes);
+          this.updateFilter(this.state.filter, this.state.earthquakes);
         } else {
-          const errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
           throw error;
         }
       } catch (e) {
@@ -38,8 +36,8 @@ export default function EarthquakeData(WrappedComponent) {
       }
     }
 
-    componentWillUnmount() {
-      this._isMounted = false;
+    updateEarthquakeData(earthquakes) {
+      this.setState({ earthquakes });
     }
 
     updateFilter(filter) {
