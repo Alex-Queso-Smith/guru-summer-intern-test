@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'moment';
 
@@ -6,13 +6,6 @@ import EarthquakeDetailsButton from 'components/EarthquakeDetailsButton/Earthqua
 
 import 'components/EarthquakeRow/EarthquakeRow.css';
 
-/**
- * This component should render all of the columns needed
- * as well as the details button.
- *
- * PLEASE GIVE ANYTHING THAT HAS A VALUE IN IT THE CLASSNAME
- * EarthquakeRow__value
- */
 export default class EarthquakeRow extends PureComponent {
   constructor() {
     super();
@@ -26,12 +19,31 @@ export default class EarthquakeRow extends PureComponent {
   }
 
   render() {
-    /** Don't forget to format the time here! */
+    const { id, time, place, mag, longitude, latitude } = this.props;
+    const formattedTime = Moment(time).format('MMMM D, YYYY @ k:mm');
+
+    let earthquakeDetails = <EarthquakeDetailsButton onClick={this.toggleDetails} />;
+
+    if (this.state.expanded) {
+    earthquakeDetails =
+      <div className="EarthquakeRow__details" onClick={this.toggleDetails}>
+        <div className="EarthquakeRow__detail">
+          Latitude: {latitude}
+        </div>
+        <div className="EarthquakeRow__detail">
+          Longitude: {longitude}
+        </div>
+      </div>
+    }
 
     return (
-      <div>
-        {/* This should return the details, all the values, and the details button */}
-      </div>
+      <tr className="EarthquakeRow">
+        <td className="EarthquakeRow__value">{id}</td>
+        <td className="EarthquakeRow__value">{formattedTime}</td>
+        <td className="EarthquakeRow__value">{place}</td>
+        <td className="EarthquakeRow__value">{mag}</td>
+        <td className="EarthquakeRow__value">{earthquakeDetails}</td>
+      </tr>
     );
   }
 }

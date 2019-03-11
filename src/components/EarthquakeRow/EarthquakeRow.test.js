@@ -44,6 +44,6 @@ describe('component - EarthquakeRow', () => {
       .find('.EarthquakeRow__value')
       .map(value => value.props().children);
 
-    expect(values[1]).toBe('July 25, 2017 @ 19:07');
+    expect(values[1]).toBe('July 25, 2017 @ 19:23');
   });
 });

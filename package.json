@@ -15,22 +15,18 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "precommit": "lint-staged",
-    "build-css":
-      "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "GENERATE_SOURCEMAP=false react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
-    "validate:prettier":
-      "node node_modules/prettier/index.js src/**/* --single-quote --trailing-comma 'es5' --write",
+    "validate:prettier": "node node_modules/prettier/index.js src/**/* --single-quote --trailing-comma 'es5' --write",
     "validate:eslint": "node ./node_modules/eslint/bin/eslint ./src --fix",
     "validate:jest": "CI=true yarn test",
     "validate:congratulate": "./bin/congratulate.sh",
-    "validate":
-      "yarn validate:prettier && yarn validate:eslint && yarn validate:jest && yarn validate:congratulate",
+    "validate": "yarn validate:prettier && yarn validate:eslint && yarn validate:jest && yarn validate:congratulate",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

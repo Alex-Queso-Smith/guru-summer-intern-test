@@ -9,12 +9,27 @@ import 'components/Earthquakes/Earthquakes.css';
 
 class Earthquakes extends PureComponent {
   render() {
-    const { updateFilter } = this.props;
+    const { updateFilter, earthquakes } = this.props;
+
+    const earthquakeRows = earthquakes.map(quake => (
+      <EarthquakeRow
+        key={quake.id}
+        id={quake.id}
+        time={quake.time}
+        place={quake.place}
+        mag={quake.mag}
+        longitude={quake.longitude}
+        latitude={quake.latitude}
+      />
+    ));
 
     return (
       <div className="Earthquakes">
         <EarthquakeFilter onInput={updateFilter} />
-        {/* render all your earthquake rows here! */}
+        <table className="Earthquakes__table-scroller Earthquakes__table ">
+          <EarthquakesHeader />
+          <tbody>{earthquakeRows}</tbody>
+        </table>
       </div>
     );
   }
