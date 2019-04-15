@@ -31,8 +31,8 @@ export default function EarthquakeData(WrappedComponent) {
           const error = new Error(errorMessage);
           throw error;
         }
-      } catch (e) {
-        console.error(`Error in fetch: ${e.message}`);
+      } catch (err) {
+        console.error(`Error in fetch: ${err.message}`);
       }
     }
 

@@ -1,3 +1,18 @@
+# Guru React Internship Coding Challenge
+
+This is a simple react app that fetches, sorts, and displays earthquake data based on the challenges specifications. The app also features a simple search bar to allow users to search for earthquakes by location. Detailed instructions for the assignment are found within the ASSIGNMENT.md file within the assignment folder.
+
+To see a local copy of the application running, clone this repo then follow the next steps..
+
+1. Run `yarn` to install dependencies
+
+2. Run `yarn start` to run the app
+
+3. visit (localhost:3000) to see the live app.
+
+
+# Initial Instructions found below.....
+
 # Guru Frontend Test
 
 Thanks for taking the time to take our Front-end technical assignment! This should take roughly 4-6 hours, but it's fine if it takes you longer.
