@@ -8,7 +8,7 @@ To see a local copy of the application running, clone this repo then follow the 
 
 2. Run `yarn start` to run the app
 
-3. visit [localhost:3000](localhost:3000) to see the live app.
+3. visit localhost:3000 to see the live app.
 
 
 # Initial Instructions found below.....
